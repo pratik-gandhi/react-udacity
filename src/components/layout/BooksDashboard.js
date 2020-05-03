@@ -1,20 +1,20 @@
 import React from "react";
 
-import BookShelves from "./bookshelf/BookShelves";
+import BookShelves from "../bookshelf/BookShelves";
+import { appName } from "../../config/Config";
 
 class BooksDashBoard extends React.Component {
-  name = "MyReads";
   render() {
     return (
       <div className="list-books">
         <div className="list-books-title">
-          <h1>{this.name}</h1>
+          <h1>{appName}</h1>
         </div>
         <div className="list-books-content">
           <div>
-            <BookShelves 
-                books={this.props.books}
-                updateBook={this.props.updateBook}
+            <BookShelves
+              books={this.props.books}
+              updateBook={this.props.updateBook}
             />
           </div>
         </div>

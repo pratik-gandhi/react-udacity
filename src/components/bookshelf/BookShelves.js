@@ -3,9 +3,9 @@ import BookShelf from "./BookShelf";
 import ShelfTypes from "../../common/ShelfTypes";
 
 class BookShelves extends React.Component {
-
+  
   categories = Object.keys(ShelfTypes)
-    .filter((key) => key !== "None" && ShelfTypes.hasOwnProperty(key))
+    .filter((key) => ShelfTypes.hasOwnProperty(key) && ShelfTypes[key].show)
     .map((key) => ShelfTypes[key]);
 
   render() {

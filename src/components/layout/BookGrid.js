@@ -9,10 +9,11 @@ class BookGrid extends React.Component {
         {this.props.books.map((book) => (
           <li key={book.id}>
             <Book
-              updateBook={this.props.updateBook}  
+              updateBook={(newShelf) => this.props.updateBook(book, newShelf)}
               title={book.title}
-              author={book.authors[0]}
+              authors={book.authors}
               url={book.imageLinks ? book.imageLinks.thumbnail : null}
+              shelf={book.shelf}
             />
           </li>
         ))}

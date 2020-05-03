@@ -6,11 +6,11 @@ class SearchBar extends React.Component {
   };
 
   updateQuery = (e) => {
-    const query = e.target.value;  
+    const query = e.target.value;
     this.setState(() => ({
       query: query,
     }));
-    this.props.search(query)
+    this.props.search(query);
   };
 
   render() {
@@ -20,11 +20,12 @@ class SearchBar extends React.Component {
           Close
         </div>
         <div className="search-books-input-wrapper">
-          <input 
-                type="text" 
-                placeholder="Search by title or author"
-                value={this.state.query}
-                onChange={this.updateQuery} />
+          <input
+            type="text"
+            placeholder="Search by title or author"
+            value={this.state.query}
+            onChange={this.updateQuery}
+          />
         </div>
       </div>
     );
