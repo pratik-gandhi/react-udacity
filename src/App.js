@@ -29,7 +29,7 @@ class BooksApp extends React.Component {
       bookToUpdate.shelf = newShelf;
       this.setBooks(getUpdatedBookList(this.state.books, bookToUpdate));
     } catch (err) {
-      console.log(`Error occurred when updating shelf for book ${bookToUpdate.name} : ${err}`);
+      console.error(`Error occurred when updating shelf for book ${bookToUpdate.name} : ${err}`);
     }
   };
 
@@ -38,7 +38,7 @@ class BooksApp extends React.Component {
       const books = await BooksAPI.getAll();
       this.setState({ books });
     } catch (err) {
-      console.log(`Error occurred when loading books : ${err}`);
+      console.error(`Error occurred when loading books : ${err}`);
     }
   }
 
