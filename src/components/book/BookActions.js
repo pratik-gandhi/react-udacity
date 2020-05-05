@@ -1,32 +1,37 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import shelfTypes from "../../common/ShelfTypes";
 
-class ShelfChanger extends React.Component {
-  
-  shelves = Object.keys(shelfTypes)
+const ShelfChanger = (props) => {
+  const shelves = Object.keys(shelfTypes)
     .filter((key) => shelfTypes.hasOwnProperty(key))
     .map((key) => shelfTypes[key]);
 
-  render() {
-    return (
-      <div className="book-shelf-changer">
-        <select
-          defaultValue={this.props.currentShelf ? this.props.currentShelf : shelfTypes.None.value}
-          onChange={(event) => this.props.updateBook(event.target.value)}
-        >
-          <option value="move" disabled>
-            Move to...
+  return (
+    <div className="book-shelf-changer">
+      <select
+        defaultValue={
+          props.currentShelf ? props.currentShelf : shelfTypes.None.value
+        }
+        onChange={(event) => props.updateBook(event.target.value)}
+      >
+        <option value="move" disabled>
+          Move to...
+        </option>
+        {shelves.map((shelf) => (
+          <option key={shelf.value} value={shelf.value}>
+            {shelf.name}
           </option>
-          {this.shelves.map((shelf) => (
-            <option key={shelf.value} value={shelf.value}>
-              {shelf.name}
-            </option>
-          ))}
-        </select>
-      </div>
-    );
-  }
-}
+        ))}
+      </select>
+    </div>
+  );
+};
+
+ShelfChanger.propTypes = {
+  currentShelf: PropTypes.string,
+  updateBook: PropTypes.func.isRequired,
+};
 
 export default ShelfChanger;
