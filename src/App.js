@@ -23,19 +23,23 @@ class BooksApp extends React.Component {
     }));
   };
 
-  updateBook = (bookToUpdate, newShelf) => {
-    BooksAPI.update(bookToUpdate, newShelf)
-      .then(() => {
-        bookToUpdate.shelf = newShelf;
-        this.setBooks(getUpdatedBookList(this.state.books, bookToUpdate));
-      })
-      .catch((err) => console.error(err));
+  updateBook = async (bookToUpdate, newShelf) => {
+    try {
+      await BooksAPI.update(bookToUpdate, newShelf);
+      bookToUpdate.shelf = newShelf;
+      this.setBooks(getUpdatedBookList(this.state.books, bookToUpdate));
+    } catch (err) {
+      console.log(`Error occurred when updating shelf for book ${bookToUpdate.name} : ${err}`);
+    }
   };
 
-  componentDidMount() {
-    BooksAPI.getAll().then((data) => {
-      this.setBooks(data);
-    });
+  async componentDidMount() {
+    try {
+      const books = await BooksAPI.getAll();
+      this.setState({ books });
+    } catch (err) {
+      console.log(`Error occurred when loading books : ${err}`);
+    }
   }
 
   render() {
@@ -47,6 +51,7 @@ class BooksApp extends React.Component {
           render={({ history }) => (
             <BookSearch
               updateBook={this.updateBook}
+              currentBooks={this.state.books}
               closeSearch={() => {
                 history.push(URLPaths.ROOT);
               }}
