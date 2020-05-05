@@ -1,6 +1,11 @@
 import ShelfTypes from "../common/ShelfTypes";
 
-export const getUpdatedBookList = (currentBookList, bookToUpdate) => {
+export const getUpdatedBookList = (currentBookList, bookToUpdate, newShelf) => {
+  
+  if (newShelf === ShelfTypes.None.value) {
+    return currentBookList.filter(book => book.id !== bookToUpdate.id)
+  }
+ 
   const shownBooks = currentBookList.filter(
     (book) => book.shelf !== ShelfTypes.None.value
   );

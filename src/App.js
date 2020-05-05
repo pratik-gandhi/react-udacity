@@ -27,7 +27,7 @@ class BooksApp extends React.Component {
     try {
       await BooksAPI.update(bookToUpdate, newShelf);
       bookToUpdate.shelf = newShelf;
-      this.setBooks(getUpdatedBookList(this.state.books, bookToUpdate));
+      this.setBooks(getUpdatedBookList(this.state.books, bookToUpdate, newShelf));
     } catch (err) {
       console.error(`Error occurred when updating shelf for book ${bookToUpdate.name} : ${err}`);
     }
