@@ -8,3 +8,15 @@ export const getUpdatedBookList = (currentBookList, bookToUpdate) => {
     ? shownBooks
     : [...shownBooks, bookToUpdate];
 };
+
+export const getShelf = (book, currentBooks) => {
+  let shelf = ShelfTypes.None.value;
+
+  if (currentBooks && currentBooks.length > 0) {
+    const displayedBook = currentBooks.find((b) => b.id === book.id);
+    if (displayedBook && displayedBook.shelf) {
+      shelf = displayedBook.shelf;
+    }
+  }
+  return shelf;
+};

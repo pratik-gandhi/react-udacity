@@ -44,6 +44,7 @@ class BookSearch extends React.Component {
           />
           <SearchResults
             results={this.state.results}
+            currentBooks={this.props.currentBooks}
             updateBook={this.props.updateBook}
           />
         </div>
