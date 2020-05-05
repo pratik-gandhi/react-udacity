@@ -1,4 +1,5 @@
 export const appName = "MyReads";
+export const searchThrottle = "200";
 export const useWhiteList = false;
 
 /**

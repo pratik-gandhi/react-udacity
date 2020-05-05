@@ -74,3 +74,15 @@ matches one of the whitelisted search keywords
 
 - `show` property of a ShelfType can be used configure whether 
 to show a Shelf on the home page or not
+
+## Acknowledgements & Dependencies
+
+- This project is developed using [react](https://github.com/facebook/react)
+- This project is developed on top of [Myreads Starter](https://github.com/udacity/reactnd-project-myreads-starter) 
+provided by [Udacity](https://www.udacity.com/)
+- Package [react-throttle](https://github.com/gmcquistin/react-throttle) is used to throttle search requests
+- Package [prop-types](https://github.com/facebook/prop-types) is used to define expected types of components
+
+## License
+
+MIT 

@@ -1,4 +1,7 @@
 import React from "react";
+import { Throttle } from "react-throttle";
+
+import { searchThrottle } from "../../config/Config";
 
 class SearchBar extends React.Component {
   state = {
@@ -6,10 +9,13 @@ class SearchBar extends React.Component {
   };
 
   updateQuery = (e) => {
-    const query = e.target.value;
+    console.log(e);
+    const query = e.currentTarget.value;
+    console.log(query)
     this.setState(() => ({
       query: query,
     }));
+    console.log(`State ${this.state.query}`)
     this.props.search(query);
   };
 
@@ -20,12 +26,14 @@ class SearchBar extends React.Component {
           Close
         </div>
         <div className="search-books-input-wrapper">
-          <input
-            type="text"
-            placeholder="Search by title or author"
-            value={this.state.query}
-            onChange={this.updateQuery}
-          />
+          <Throttle time={searchThrottle} handler="onChange">
+            <input
+              type="text"
+              placeholder="Search by title or author"
+              value={this.state.query}
+              onChange={(e) => this.updateQuery(e)}
+            />
+          </Throttle>
         </div>
       </div>
     );

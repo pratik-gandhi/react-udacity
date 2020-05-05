@@ -12,9 +12,7 @@ export const Thumbnail = (props) => {
 };
 
 export const Author = (props) => {
-  return (
-    <div className="book-authors">{ props.author } </div>
-  );
+  return <div className="book-authors">{props.author} </div>;
 };
 
 export const Title = (props) => {
